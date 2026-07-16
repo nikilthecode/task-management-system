@@ -12,15 +12,33 @@
     </p>
 
     <hr>
+    <h2>Add New Task</h2>
 
-    <h2>Features</h2>
+<form method="POST">
+    {% csrf_token %}
 
-    <ul>
-        <li>Create Tasks</li>
-        <li>Edit Tasks</li>
-        <li>Delete Tasks</li>
-        <li>Mark Tasks as Completed</li>
-    </ul>
+    {{ form.as_p }}
+
+    <button type="submit">Add Task</button>
+</form>
+
+<hr>
+
+    <h2>Tasks</h2>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            <strong>{{ task.title }}</strong><br>
+            {{ task.description }} <br>
+            <a href="/edit/{{ task.id }}/">Edit</a>
+            <a href="/delete/{{ task.id }}/">Delete</a>
+        </li>
+        <br>
+    {% empty %}
+        <li>No tasks available.</li>
+    {% endfor %}
+</ul>
 
     <button>Get Started</button>
 
