@@ -1,47 +1,146 @@
-<body>
+{% extends 'base.html' %}
 
-<div class="container">
+{% block title %}
+Task Manager
+{% endblock %}
 
-    <h1>Task Management System</h1>
+{% block content %}
 
-    <h3>Organize Your Work Efficiently</h3>
+<div class="row mb-4">
 
-    <p>
-        Welcome to my Task Management System built using Django.
-        This application helps users create, manage and track their daily tasks.
-    </p>
+    <div class="col-md-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5>Total Tasks</h5>
+                <h2>{{ tasks|length }}</h2>
+            </div>
+        </div>
+    </div>
 
-    <hr>
-    <h2>Add New Task</h2>
+    <div class="col-md-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5>Completed</h5>
+                <h2>{{ completed_tasks }}</h2>
+            </div>
+        </div>
+    </div>
 
-<form method="POST">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">Add Task</button>
-</form>
-
-<hr>
-
-    <h2>Tasks</h2>
-
-<ul>
-    {% for task in tasks %}
-        <li>
-            <strong>{{ task.title }}</strong><br>
-            {{ task.description }} <br>
-            <a href="/edit/{{ task.id }}/">Edit</a>
-            <a href="/delete/{{ task.id }}/">Delete</a>
-        </li>
-        <br>
-    {% empty %}
-        <li>No tasks available.</li>
-    {% endfor %}
-</ul>
-
-    <button>Get Started</button>
+    <div class="col-md-4">
+        <div class="card shadow border-0 text-center">
+            <div class="card-body">
+                <h5>Pending</h5>
+                <h2>{{ pending_tasks }}</h2>
+            </div>
+        </div>
+    </div>
 
 </div>
 
-</body>
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">
+        Task Management System
+    </h1>
+
+    <p class="lead text-muted">
+        Organize your work efficiently.
+    </p>
+</div>
+
+<div class="card shadow mb-4">
+
+    <div class="card-header bg-primary text-white">
+        Add New Task
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-success">
+                Add Task
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<h3 class="mb-3">Your Tasks</h3>
+
+{% for task in tasks %}
+
+<div class="card shadow-sm mb-3">
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between">
+
+            <div>
+
+                <h4>{{ task.title }}</h4>
+
+                <p class="text-muted">
+                    {{ task.description }}
+                </p>
+
+            </div>
+
+            <div>
+
+                {% if task.completed %}
+                    <span class="badge bg-success">
+                        Completed
+                    </span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">
+                        Pending
+                    </span>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        {% if task.completed %}
+
+<a href="/toggle/{{ task.id }}/" class="btn btn-secondary btn-sm">
+    ↺ Mark Pending
+</a>
+
+{% else %}
+
+<a href="/toggle/{{ task.id }}/" class="btn btn-success btn-sm">
+    ✓ Complete
+</a>
+
+{% endif %}
+
+<a href="/edit/{{ task.id }}/" class="btn btn-warning btn-sm">
+    Edit
+</a>
+
+<a href="/delete/{{ task.id }}/" class="btn btn-danger btn-sm">
+    Delete
+</a>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="alert alert-info">
+    No tasks available.
+</div>
+
+{% endfor %}
+
+{% endblock %}

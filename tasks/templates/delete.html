@@ -1,25 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Task</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h2>Delete Task</h2>
+{% block title %}
+Delete Task
+{% endblock %}
 
-<p>Are you sure you want to delete:</p>
+{% block content %}
 
-<strong>{{ task.title }}</strong>
+<div class="row justify-content-center">
 
-<form method="POST">
-    {% csrf_token %}
-    <br>
-    <button type="submit">Yes, Delete</button>
-</form>
+    <div class="col-md-6">
 
-<br>
+        <div class="card shadow border-danger">
 
-<a href="/">Cancel</a>
+            <div class="card-header bg-danger text-white">
 
-</body>
-</html>
+                <h3 class="mb-0">
+                    🗑 Delete Task
+                </h3>
+
+            </div>
+
+            <div class="card-body">
+
+                <h5>
+                    Are you sure you want to delete
+                    <strong>"{{ task.title }}"</strong>?
+                </h5>
+
+                <br>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <button class="btn btn-danger">
+                        Yes, Delete
+                    </button>
+
+                    <a href="/" class="btn btn-secondary">
+                        Cancel
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
