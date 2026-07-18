@@ -8,61 +8,110 @@ Task Manager
 
 <div class="row mb-4">
 
-    <div class="col-md-4">
-        <div class="card shadow border-0 text-center">
-            <div class="card-body">
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-primary text-white shadow border-0">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:40px;">📋</div>
+
                 <h5>Total Tasks</h5>
-                <h2>{{ tasks|length }}</h2>
+
+                <h1>{{ tasks|length }}</h1>
+
             </div>
+
         </div>
+
     </div>
 
-    <div class="col-md-4">
-        <div class="card shadow border-0 text-center">
-            <div class="card-body">
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-success text-white shadow border-0">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:40px;">✅</div>
+
                 <h5>Completed</h5>
-                <h2>{{ completed_tasks }}</h2>
+
+                <h1>{{ completed_tasks }}</h1>
+
             </div>
+
         </div>
+
     </div>
 
-    <div class="col-md-4">
-        <div class="card shadow border-0 text-center">
-            <div class="card-body">
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-warning shadow border-0">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:40px;">⏳</div>
+
                 <h5>Pending</h5>
-                <h2>{{ pending_tasks }}</h2>
+
+                <h1>{{ pending_tasks }}</h1>
+
             </div>
+
         </div>
+
     </div>
 
 </div>
 
 <div class="text-center mb-5">
     <h1 class="display-4 fw-bold">
-        Task Management System
-    </h1>
+    📋 Task Management System
+</h1>
 
-    <p class="lead text-muted">
-        Organize your work efficiently.
-    </p>
+<p class="lead text-muted">
+    Organize, manage and complete your daily tasks efficiently.
+</p>
 </div>
 
-<div class="card shadow mb-4">
+<div class="card shadow-lg border-0 rounded-4 mb-5">
 
-    <div class="card-header bg-primary text-white">
-        Add New Task
+    <div class="card-header bg-primary text-white py-3">
+
+        <h4 class="mb-0">
+            ➕ Add New Task
+        </h4>
+
     </div>
 
-    <div class="card-body">
+    <div class="card-body p-4">
 
         <form method="POST">
 
             {% csrf_token %}
 
-            {{ form.as_p }}
+            <div class="mb-3">
 
-            <button type="submit" class="btn btn-success">
-                Add Task
+                <label class="form-label fw-bold">
+                    Title
+                </label>
+
+                {{ form.title }}
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label fw-bold">
+                    Description
+                </label>
+
+                {{ form.description }}
+
+            </div>
+
+            <button type="submit" class="btn btn-success px-4">
+                ➕ Add Task
             </button>
 
         </form>
@@ -94,17 +143,17 @@ Task Manager
 
 {% for task in tasks %}
 
-<div class="card shadow-sm mb-3">
+<div class="card shadow-lg border-0 rounded-4 mb-4">
 
     <div class="card-body">
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-start">
 
             <div>
 
-                <h4>{{ task.title }}</h4>
+                <h4 class="fw-bold">{{ task.title }}</h4>
 
-                <p class="text-muted">
+                <p class="text-muted mb-3">
                     {{ task.description }}
                 </p>
 
@@ -113,13 +162,17 @@ Task Manager
             <div>
 
                 {% if task.completed %}
-                    <span class="badge bg-success">
-                        Completed
+
+                    <span class="badge bg-success fs-6">
+                        ✅ Completed
                     </span>
+
                 {% else %}
-                    <span class="badge bg-warning text-dark">
-                        Pending
+
+                    <span class="badge bg-warning text-dark fs-6">
+                        ⏳ Pending
                     </span>
+
                 {% endif %}
 
             </div>
@@ -130,25 +183,25 @@ Task Manager
 
         {% if task.completed %}
 
-<a href="/toggle/{{ task.id }}/" class="btn btn-secondary btn-sm">
-    ↺ Mark Pending
-</a>
+        <a href="/toggle/{{ task.id }}/" class="btn btn-secondary btn-sm">
+            ↺ Mark Pending
+        </a>
 
-{% else %}
+        {% else %}
 
-<a href="/toggle/{{ task.id }}/" class="btn btn-success btn-sm">
-    ✓ Complete
-</a>
+        <a href="/toggle/{{ task.id }}/" class="btn btn-success btn-sm">
+            ✓ Complete
+        </a>
 
-{% endif %}
+        {% endif %}
 
-<a href="/edit/{{ task.id }}/" class="btn btn-warning btn-sm">
-    Edit
-</a>
+        <a href="/edit/{{ task.id }}/" class="btn btn-warning btn-sm">
+            ✏ Edit
+        </a>
 
-<a href="/delete/{{ task.id }}/" class="btn btn-danger btn-sm">
-    Delete
-</a>
+        <a href="/delete/{{ task.id }}/" class="btn btn-danger btn-sm">
+            🗑 Delete
+        </a>
 
     </div>
 
@@ -157,7 +210,7 @@ Task Manager
 {% empty %}
 
 <div class="alert alert-info">
-    No tasks available.
+    No tasks found.
 </div>
 
 {% endfor %}

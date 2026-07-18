@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path
 from tasks import views
-from accounts.views import register, user_login
 from accounts.views import register, user_login, user_logout
 
 urlpatterns = [
