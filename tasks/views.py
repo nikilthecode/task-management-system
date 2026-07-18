@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm
@@ -18,6 +19,14 @@ def home(request):
 
     form = TaskForm()
     tasks = Task.objects.filter(user=request.user)
+
+    search = request.GET.get("search")
+
+    if search:
+        tasks = tasks.filter(
+            Q(title__icontains=search) |
+            Q(description__icontains=search)
+    )
     completed_tasks = tasks.filter(completed=True).count()
     pending_tasks = tasks.filter(completed=False).count()
 
