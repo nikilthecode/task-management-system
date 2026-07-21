@@ -14,20 +14,20 @@ https://task-management-system-kweo.onrender.com
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔐 User Registration
-- 🔐 Secure Login & Logout
-- ✅ Create Tasks
-- ✏️ Edit Tasks
-- 🗑 Delete Tasks
-- ✔ Mark Tasks Complete
-- ⏳ Pending Tasks
-- 🔍 Search Tasks
-- 📊 Dashboard Statistics
-- 💬 Success Messages
-- 📱 Responsive Design
-- 🎨 Bootstrap UI
+-  User Registration
+-  Secure Login & Logout
+-  Create Tasks
+-  Edit Tasks
+-  Delete Tasks
+-  Mark Tasks Complete
+-  Pending Tasks
+-  Search Tasks
+-  Dashboard Statistics
+-  Success Messages
+-  Responsive Design
+-  Bootstrap UI
 
 ---
 
@@ -179,7 +179,7 @@ https://task-management-system-kweo.onrender.com
 
 -  Due Dates
 -  Task Priority
-- 🏷 Categories
+-  Categories
 -  Email Notifications
 -  File Uploads
 -  Dark Mode
