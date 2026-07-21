@@ -35,43 +35,37 @@ https://task-management-system-kweo.onrender.com
 
 ##  Login Page
 
-Secure authentication system.
+Secure user authentication with login and registration.
 
-![Login](<img width="1917" height="777" alt="Screenshot 2026-07-21 111125" src="https://github.com/user-attachments/assets/bc67c69c-749f-4be8-ab21-24e91820a6cc" />
-)
+![Login Page](screenshots/login-page.png)
 
 ---
 
 ##  Dashboard
 
-View task statistics instantly.
+Track your productivity with task statistics.
 
 - Total Tasks
 - Completed Tasks
 - Pending Tasks
 
-![Dashboard](<img width="1900" height="896" alt="Screenshot 2026-07-21 111422" src="https://github.com/user-attachments/assets/1a420349-3a6e-4676-aff4-6fd7650ac658" />
-)
+![Dashboard](screenshots/dashboard.png)
 
 ---
 
-##  Task Management
+##  Add New Task
 
-Create and manage your daily tasks.
+Create and organize tasks using a clean, responsive interface.
 
-![Tasks](<img width="1911" height="911" alt="Screenshot 2026-07-21 111555" src="https://github.com/user-attachments/assets/2f3b97eb-c6ac-4c98-a6ff-d64f5510aee8" />
-)
-
----
-
-##  Search Functionality
-
-Instantly search tasks by title.
-
-![Search](<img width="1873" height="338" alt="Screenshot 2026-07-21 111705" src="https://github.com/user-attachments/assets/67bfef6a-3da6-4571-ae7d-74418649cfd7" />
-)
+![Add Task](screenshots/add-task.png)
 
 ---
+
+##  Search Tasks
+
+Instantly search tasks by title for quick access.
+
+![Search Task](screenshots/search-task.png)
 
 #  Built With
 
