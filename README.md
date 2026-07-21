@@ -36,14 +36,12 @@ A modern Task Management web application built with **Django** and **Bootstrap 5
 
 ```
 Task-Management-System/
-│
-├── accounts/
-├── config/
-├── tasks/
-├── manage.py
-├── db.sqlite3
-└── README.md
-```
+ accounts/
+ config/
+ tasks/
+ manage.py
+ db.sqlite3
+ README.md
 
 ---
 
